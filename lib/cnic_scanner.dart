@@ -49,14 +49,14 @@ class CnicScanner {
         if (line.text.toLowerCase() == "name" ||
             line.text.toLowerCase() == "nane" ||
             line.text.toLowerCase() == "nam" ||
-            line.text.toLowerCase() == "ame" || line.text.toLowerCase() == "dı" || line.text.toLowerCase() == "oyadı" ) {
+            line.text.toLowerCase() == "ame" || line.text.toLowerCase() == "dı" || line.text.toLowerCase() == "oyadı" || line.text == "Kimlik No" ) {
           isNameNext = true;
         }
         for (TextElement element in line.elements) {
           String selectedText = element.text;
           if (selectedText != null &&
-              selectedText.length == 15 &&
-              selectedText.contains("-", 5) &&
+              selectedText.length == 11 ||
+              selectedText.contains("-", 5) ||
               selectedText.contains("-", 13)) {
             _cnicDetails.cnicNumber = selectedText;
           } else if (selectedText != null &&
@@ -120,10 +120,10 @@ class CnicScanner {
         _cnicDetails.cnicHolderDateOfBirth.length > 0 &&
         _cnicDetails.cnicIssueDate.length > 0 &&
         _cnicDetails.cnicExpiryDate.length > 0) {
-      print('==================== SMART CARD DETAILS $_cnicDetails');
+      print('==================== KİMLİK DETAYLARI$_cnicDetails');
       return Future.value(_cnicDetails);
     } else {
-      print('==================== OLD CARD DETAILS $_cnicDetails');
+      print('==================== KİMLİK DETAYLARI $_cnicDetails');
       return await scanImage(imageSource: source);
     }
   }

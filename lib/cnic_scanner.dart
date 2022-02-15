@@ -53,12 +53,15 @@ class CnicScanner {
           isNameNext = true;
         }
         for (TextElement element in line.elements) {
+          String kimlikNo = element.text;
           String selectedText = element.text;
           if (selectedText != null &&
               selectedText.length == 11 ||
               selectedText.contains("-", 5) ||
               selectedText.contains("-", 13)) {
             _cnicDetails.cnicNumber = selectedText;
+            _cnicDetails.cnicNumber = kimlikNo;
+            print("Deneme" + kimlikNo.toString());
           } else if (selectedText != null &&
               selectedText.length == 10 &&
               ((selectedText.contains("/", 2) &&
@@ -131,7 +134,7 @@ class CnicScanner {
   /// it will sort the dates
   static List<String> sortDateList({required List<String> dates}) {
     List<DateTime> tempList = [];
-    DateFormat format = DateFormat("dd/MM/yyyy");
+    DateFormat format = DateFormat("dd.MM.yyyy");
     for (int i = 0; i < dates.length; i++) {
       tempList.add(format.parse(dates[i]));
     }

@@ -10,16 +10,16 @@ class CnicModel {
   @override
   String toString() {
     var string = '';
-    string += _cnicNumber.isEmpty ? "" : 'Cnic Number = $cnicNumber\n';
+    string += _cnicNumber.isEmpty ? "" : 'Kimlik Numarası = $cnicNumber\n';
     string +=
-        _cnicExpiryDate.isEmpty ? "" : 'Cnic Expiry Date = $cnicExpiryDate\n';
+        _cnicExpiryDate.isEmpty ? "" : 'Kimlik Son Geçerlilik Tarihi = $cnicExpiryDate\n';
     string +=
         _cnicIssueDate.isEmpty ? "" : 'Cnic Issue Date = $cnicIssueDate\n';
     string +=
         _cnicHolderName.isEmpty ? "" : 'Cnic Holder Name = $cnicHolderName\n';
     string += _cnicHolderDateOfBirth.isEmpty
         ? ""
-        : 'Cnic Holder DoB = $cnicHolderDateOfBirth\n';
+        : 'Doğum Tarihi = $cnicHolderDateOfBirth\n';
     return string;
   }
 

@@ -49,7 +49,7 @@ class CnicScanner {
         if (line.text.toLowerCase() == "name" ||
             line.text.toLowerCase() == "nane" ||
             line.text.toLowerCase() == "nam" ||
-            line.text.toLowerCase() == "ame") {
+            line.text.toLowerCase() == "ame" || line.text.toLowerCase() == "dı" || line.text.toLowerCase() == "oyadı" ) {
           isNameNext = true;
         }
         for (TextElement element in line.elements) {

@@ -55,8 +55,8 @@ class CnicScanner {
         for (TextElement element in line.elements) {
           String selectedText = element.text;
           if (selectedText != null &&
-              selectedText.length == 11 ||
-              selectedText.contains("-", 5) ||
+              selectedText.length == 11 &&
+              selectedText.contains("-", 5) &&
               selectedText.contains("-", 13)) {
             _cnicDetails.cnicNumber = selectedText;
           } else if (selectedText != null &&

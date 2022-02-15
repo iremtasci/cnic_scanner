@@ -49,7 +49,7 @@ class CnicScanner {
         if (line.text.toLowerCase() == "name" ||
             line.text.toLowerCase() == "nane" ||
             line.text.toLowerCase() == "nam" ||
-            line.text.toLowerCase() == "ame" || line.text.toLowerCase() == "dı" || line.text.toLowerCase() == "oyadı" || line.text == "Kimlik No" ) {
+            line.text.toLowerCase() == "ame" || line.text.toLowerCase() == "dı" || line.text.toLowerCase() == "oyadı" ) {
           isNameNext = true;
         }
         for (TextElement element in line.elements) {
@@ -131,7 +131,7 @@ class CnicScanner {
   /// it will sort the dates
   static List<String> sortDateList({required List<String> dates}) {
     List<DateTime> tempList = [];
-    DateFormat format = DateFormat("dd.MM.yyyy");
+    DateFormat format = DateFormat("dd/MM/yyyy");
     for (int i = 0; i < dates.length; i++) {
       tempList.add(format.parse(dates[i]));
     }

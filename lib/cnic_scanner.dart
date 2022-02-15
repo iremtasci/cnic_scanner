@@ -55,7 +55,7 @@ class CnicScanner {
         for (TextElement element in line.elements) {
           String selectedText = element.text;
           if (selectedText != null &&
-              selectedText.length == 11 &&
+              selectedText.length == 15 &&
               selectedText.contains("-", 5) &&
               selectedText.contains("-", 13)) {
             _cnicDetails.cnicNumber = selectedText;
@@ -120,10 +120,10 @@ class CnicScanner {
         _cnicDetails.cnicHolderDateOfBirth.length > 0 &&
         _cnicDetails.cnicIssueDate.length > 0 &&
         _cnicDetails.cnicExpiryDate.length > 0) {
-      print('==================== KİMLİK DETAYLARI$_cnicDetails');
+      print('==================== SMART CARD DETAILS $_cnicDetails');
       return Future.value(_cnicDetails);
     } else {
-      print('==================== KİMLİK DETAYLARI $_cnicDetails');
+      print('==================== OLD CARD DETAILS $_cnicDetails');
       return await scanImage(imageSource: source);
     }
   }

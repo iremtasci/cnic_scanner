@@ -55,17 +55,13 @@ class CnicScanner {
         for (TextElement element in line.elements) {
           String selectedText = element.text;
           if (selectedText != null &&
-              selectedText.length == 15 &&
-              selectedText.contains("-", 5) &&
-              selectedText.contains("-", 13)) {
+              selectedText.length == 11) {
             _cnicDetails.cnicNumber = selectedText;
           } else if (selectedText != null &&
-              selectedText.length == 10 &&
-              ((selectedText.contains("/", 2) &&
-                      selectedText.contains("/", 5)) ||
-                  (selectedText.contains(".", 2) &&
-                      selectedText.contains(".", 5)))) {
-            cnicDates.add(selectedText.replaceAll(".", "/"));
+              selectedText.length == 9 &&
+              ((selectedText.contains("A", 1) &&
+                      selectedText.contains("0", 1)))) {
+            _cnicDetails.seriNo = selectedText;
           }
         }
       }
@@ -88,7 +84,7 @@ class CnicScanner {
     if (cnicDates.length > 1) {
       cnicDates = sortDateList(dates: cnicDates);
     }
-    if (cnicDates.length == 1 &&
+    if (cnicDates.length == 1 ||
         _cnicDetails.cnicHolderDateOfBirth.length != 10) {
       _cnicDetails.cnicHolderDateOfBirth = cnicDates[0];
       isFrontScan = true;
@@ -120,10 +116,10 @@ class CnicScanner {
         _cnicDetails.cnicHolderDateOfBirth.length > 0 &&
         _cnicDetails.cnicIssueDate.length > 0 &&
         _cnicDetails.cnicExpiryDate.length > 0) {
-      print('==================== SMART CARD DETAILS $_cnicDetails');
+      print('==================== KİMLİK BİLGİLERİ$_cnicDetails');
       return Future.value(_cnicDetails);
     } else {
-      print('==================== OLD CARD DETAILS $_cnicDetails');
+      print('==================== KİMLİK BİLGİLERİ$_cnicDetails');
       return await scanImage(imageSource: source);
     }
   }

@@ -6,6 +6,7 @@ class CnicModel {
   String _cnicHolderName = "";
   String _cnicExpiryDate = "";
   String _cnicHolderDateOfBirth = "";
+  String _seriNo = "";
 
   @override
   String toString() {
@@ -20,6 +21,9 @@ class CnicModel {
     string += _cnicHolderDateOfBirth.isEmpty
         ? ""
         : 'Doğum Tarihi = $cnicHolderDateOfBirth\n';
+    string += _seriNo.isEmpty
+        ? ""
+        : 'Seri No = $_seriNo\n';
     return string;
   }
 
@@ -31,10 +35,15 @@ class CnicModel {
 
   String get cnicExpiryDate => _cnicExpiryDate;
 
+  String get seriNo => _seriNo;
+
   String get cnicHolderDateOfBirth => _cnicHolderDateOfBirth;
 
   set cnicHolderDateOfBirth(String value) {
     _cnicHolderDateOfBirth = value;
+  }
+  set seriNo(String value) {
+    _seriNo = value;
   }
 
   set cnicExpiryDate(String value) {
